@@ -11,5 +11,7 @@
 @interface ViewController : UIViewController
 
 
+- (IBAction)handleTranslate:(id)sender;
+
 @end
 

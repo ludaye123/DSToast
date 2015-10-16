@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
 @protocol DSToastAnimationDelegate;
@@ -14,7 +15,8 @@
 typedef NS_ENUM(NSInteger, DSToastAnimationType)
 {
     DSToastAnimationTypeAlpha, // default
-    DSToastAnimationTypeScale
+    DSToastAnimationTypeScale,
+    DSToastAnimationTypePositionLeftToRight
 };
 
 @interface DSToastAnimation : NSObject

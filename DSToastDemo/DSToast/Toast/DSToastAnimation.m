@@ -44,7 +44,11 @@ static NSString *const kOpacityKeyPath = @"opacity";
         case DSToastAnimationTypeAlpha:
             forwardAnimation = [CABasicAnimation animationWithKeyPath:kOpacityKeyPath];
             backwardAnimation = [CABasicAnimation animationWithKeyPath:kOpacityKeyPath];
-
+            
+            forwardAnimation.fromValue = @0.0;
+            forwardAnimation.toValue = @1.0;
+            backwardAnimation.fromValue = @1.0;
+            backwardAnimation.toValue = @0.0;
             break;
             
         case DSToastAnimationTypeScale:
@@ -52,7 +56,23 @@ static NSString *const kOpacityKeyPath = @"opacity";
             forwardAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.5f :1.7f :0.6f :0.85f];
             backwardAnimation = [CABasicAnimation animationWithKeyPath:kScaleKeyPath];
             backwardAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.4f :0.15f :0.5f :-0.7f];
-
+            forwardAnimation.fromValue = @0.0;
+            forwardAnimation.toValue = @1.0;
+            backwardAnimation.fromValue = @1.0;
+            backwardAnimation.toValue = @0.0;
+            
+            break;
+            
+        case DSToastAnimationTypePositionLeftToRight:
+            
+            forwardAnimation = [CABasicAnimation animationWithKeyPath:@"position.x"];
+            backwardAnimation = [CABasicAnimation animationWithKeyPath:@"position.x"];
+            
+            forwardAnimation.fromValue = @(-CGRectGetWidth([UIScreen mainScreen].bounds));
+            forwardAnimation.toValue = @(CGRectGetWidth([UIScreen mainScreen].bounds)/2);
+            backwardAnimation.fromValue = @(CGRectGetWidth([UIScreen mainScreen].bounds)/2);
+            backwardAnimation.toValue = @(CGRectGetWidth([UIScreen mainScreen].bounds) * 2);
+            
             break;
         
         default:
@@ -60,11 +80,7 @@ static NSString *const kOpacityKeyPath = @"opacity";
     }
     
     forwardAnimation.duration = self.forwardAnimationDuration;
-    forwardAnimation.fromValue = @0.0;
-    forwardAnimation.toValue = @1.0;
     backwardAnimation.duration = self.backwardAnimationDuration;
-    backwardAnimation.fromValue = @1.0;
-    backwardAnimation.toValue = @0.0;
     backwardAnimation.beginTime = forwardAnimation.duration + self.waitAnimationDuration;
 
     CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
@@ -73,6 +89,7 @@ static NSString *const kOpacityKeyPath = @"opacity";
     animationGroup.removedOnCompletion = NO;
     animationGroup.delegate = self;
     animationGroup.fillMode = kCAFillModeForwards;
+    
     
     return animationGroup;
 }
@@ -87,6 +104,5 @@ static NSString *const kOpacityKeyPath = @"opacity";
         [self.delegate toastAnimationDidStop:anim finished:flag];
     }
 }
-
 
 @end

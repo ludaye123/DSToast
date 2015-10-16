@@ -56,6 +56,22 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mj0-2k-UMT">
+                                <rect key="frame" x="198" y="363" width="204" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="204" id="kr8-vp-NjU"/>
+                                    <constraint firstAttribute="height" constant="30" id="uvv-f1-yAJ"/>
+                                </constraints>
+                                <state key="normal" title="Left To Right Animation">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleTranslate:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="pif-MZ-hsG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -63,6 +79,8 @@
                             <constraint firstItem="vQm-Et-QE3" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="50" id="9vJ-T9-nUn"/>
                             <constraint firstItem="HaL-zx-4MA" firstAttribute="top" secondItem="kib-DL-6bZ" secondAttribute="bottom" constant="8" id="BFx-D5-pLZ"/>
                             <constraint firstItem="kib-DL-6bZ" firstAttribute="centerX" secondItem="HaL-zx-4MA" secondAttribute="centerX" id="GXf-l5-V7n"/>
+                            <constraint firstItem="mj0-2k-UMT" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Od2-H6-zp0"/>
+                            <constraint firstItem="mj0-2k-UMT" firstAttribute="top" secondItem="HaL-zx-4MA" secondAttribute="bottom" constant="10" id="dve-Vb-F3S"/>
                             <constraint firstAttribute="centerY" secondItem="kib-DL-6bZ" secondAttribute="centerY" id="g2l-07-zBI"/>
                             <constraint firstAttribute="centerX" secondItem="kib-DL-6bZ" secondAttribute="centerX" id="mUG-OK-Vo8"/>
                             <constraint firstItem="vQm-Et-QE3" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="s7f-CC-1dg"/>
@@ -71,6 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="243" y="220"/>
         </scene>
     </scenes>
 </document>

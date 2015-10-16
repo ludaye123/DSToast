@@ -92,6 +92,8 @@ static CGFloat const kDefalultTextInset = 10.0;
 - (void)showInView:(UIView *)view
 {
     [self addAnimationGroup];
+    NSLog(@"%@",NSStringFromCGPoint(self.layer.position));
+
     CGPoint point = view.center;
     point.y = CGRectGetHeight(view.bounds)- kDefaultBottomMargin;
     self.center = point;
@@ -101,6 +103,7 @@ static CGFloat const kDefalultTextInset = 10.0;
 - (void)showInView:(UIView *)view showType:(DSToastShowType)type
 {
     [self addAnimationGroup];
+    
     CGPoint point = view.center;
     switch (type) {
         case DSToastShowTypeTop:
@@ -137,6 +140,7 @@ static CGFloat const kDefalultTextInset = 10.0;
 {
     if(flag)
     {
+        [self.layer removeAllAnimations];
         [self removeFromSuperview];
     }
 }
