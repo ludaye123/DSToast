@@ -8,7 +8,9 @@
 
 #import "DSToast.h"
 
-@interface DSToast ()
+@interface DSToast () <DSToastAnimationDelegate>
+
+@property (nonatomic, strong) DSToastAnimation *toastAnimation;
 
 @end
 
@@ -22,20 +24,41 @@ static CGFloat const kDefalultTextInset = 10.0;
 
 @implementation DSToast
 
-+ (id)toastWithText:(NSString *)text
++ (instancetype)toastWithText:(NSString *)text
 {
-    DSToast *toast = [[DSToast alloc] initWithText:text];
-    
-    return toast;
+    return [[self alloc] initWithText:text];
 }
 
-- (id)initWithText:(NSString *)text
++ (instancetype)toastWithText:(NSString *)text animationType:(DSToastAnimationType)animationType
+{
+    return [[self alloc] initWithText:text animationType:animationType];
+}
+
+- (instancetype)initWithText:(NSString *)text
 {
     self = [self initWithFrame:CGRectZero];
     if(self)
     {
         self.text = text;
         [self sizeToFit];
+        _animationType = DSToastAnimationTypeAlpha;
+        _toastAnimation = [DSToastAnimation toastAnimation];
+        _toastAnimation.delegate = self;
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithText:(NSString *)text animationType:(DSToastAnimationType)animationType
+{
+    self = [self initWithFrame:CGRectZero];
+    if(self)
+    {
+        self.text = text;
+        [self sizeToFit];
+        _animationType = animationType;
+        _toastAnimation = [DSToastAnimation toastAnimation];
+        _toastAnimation.delegate = self;
     }
     
     return self;
@@ -48,6 +71,8 @@ static CGFloat const kDefalultTextInset = 10.0;
     {
         self.forwardAnimationDuration = kDefaultForwardAnimationDuration;
         self.backwardAnimationDuration = kDefaultBackwardAnimationDuration;
+        self.waitAnimationDuration = kDefaultWaitAnimationDuration;
+        
         self.textInsets = UIEdgeInsetsMake(kDefalultTextInset, kDefalultTextInset, kDefalultTextInset, kDefalultTextInset);
         self.maxWidth = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 20.0;
         self.layer.cornerRadius = 5.0;
@@ -100,30 +125,15 @@ static CGFloat const kDefalultTextInset = 10.0;
 
 - (void)addAnimationGroup
 {
-    CABasicAnimation *forwardAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    forwardAnimation.duration = self.forwardAnimationDuration;
-    forwardAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.5f :1.7f :0.6f :0.85f];
-    forwardAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
-    forwardAnimation.toValue = [NSNumber numberWithFloat:1.0f];
-    
-    CABasicAnimation *backwardAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    backwardAnimation.duration = self.backwardAnimationDuration;
-    backwardAnimation.beginTime = forwardAnimation.duration + kDefaultWaitAnimationDuration;
-    backwardAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.4f :0.15f :0.5f :-0.7f];
-    backwardAnimation.fromValue = [NSNumber numberWithFloat:1.0f];
-    backwardAnimation.toValue = [NSNumber numberWithFloat:0.0f];
-    
-    CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
-    animationGroup.animations = @[forwardAnimation,backwardAnimation];
-    animationGroup.duration = forwardAnimation.duration + backwardAnimation.duration + kDefaultWaitAnimationDuration;
-    animationGroup.removedOnCompletion = NO;
-    animationGroup.delegate = self;
-    animationGroup.fillMode = kCAFillModeForwards;
-    
-    [self.layer addAnimation:animationGroup forKey:nil];
+    self.toastAnimation.forwardAnimationDuration = self.forwardAnimationDuration;
+    self.toastAnimation.backwardAnimationDuration = self.backwardAnimationDuration;
+    self.toastAnimation.waitAnimationDuration = self.waitAnimationDuration;
+    [self.layer addAnimation:[self.toastAnimation animationWithType:_animationType] forKey:@"animation"];
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+#pragma mark - DSToastAnimationDelegate
+
+- (void)toastAnimationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     if(flag)
     {

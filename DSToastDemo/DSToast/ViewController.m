@@ -28,4 +28,9 @@
 //    [toast showInView:self.view showType:DSToastShowTypeBottom];
 }
 
+- (IBAction)handleScale:(id)sender
+{
+    DSToast *toast = [DSToast toastWithText:@"iOS是由苹果公司开发的移动操作系统" animationType:DSToastAnimationTypeScale];
+    [toast showInView:self.view];
+}
 @end

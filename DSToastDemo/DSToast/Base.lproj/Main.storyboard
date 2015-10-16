@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,12 +19,13 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kib-DL-6bZ">
                                 <rect key="frame" x="225" y="285" width="150" height="30"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2DE-C5-9UK"/>
                                     <constraint firstAttribute="width" constant="150" id="7hG-Gq-hxf"/>
                                 </constraints>
-                                <state key="normal" title="show">
+                                <state key="normal" title="Alpha Animation">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -31,11 +33,39 @@
                                     <action selector="handleShow:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="72n-Ym-lOh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaL-zx-4MA">
+                                <rect key="frame" x="225" y="323" width="150" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6F8-gp-eyb"/>
+                                    <constraint firstAttribute="width" constant="150" id="xQk-PB-tn2"/>
+                                </constraints>
+                                <state key="normal" title="Scale Animation">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleScale:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Te5-ft-gmm"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DSToast 是一个简单易用的提示控件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQm-Et-QE3">
+                                <rect key="frame" x="164" y="70" width="273" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vQm-Et-QE3" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="50" id="9vJ-T9-nUn"/>
+                            <constraint firstItem="HaL-zx-4MA" firstAttribute="top" secondItem="kib-DL-6bZ" secondAttribute="bottom" constant="8" id="BFx-D5-pLZ"/>
+                            <constraint firstItem="kib-DL-6bZ" firstAttribute="centerX" secondItem="HaL-zx-4MA" secondAttribute="centerX" id="GXf-l5-V7n"/>
                             <constraint firstAttribute="centerY" secondItem="kib-DL-6bZ" secondAttribute="centerY" id="g2l-07-zBI"/>
                             <constraint firstAttribute="centerX" secondItem="kib-DL-6bZ" secondAttribute="centerX" id="mUG-OK-Vo8"/>
+                            <constraint firstItem="vQm-Et-QE3" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="s7f-CC-1dg"/>
                         </constraints>
                     </view>
                 </viewController>

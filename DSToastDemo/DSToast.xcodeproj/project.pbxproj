@@ -15,6 +15,7 @@
 		4909DAF01B82B9500022C8CF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4909DAEE1B82B9500022C8CF /* LaunchScreen.xib */; };
 		4909DAFC1B82B9500022C8CF /* DSToastTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909DAFB1B82B9500022C8CF /* DSToastTests.m */; };
 		4909DB071B82B9E90022C8CF /* DSToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 4909DB061B82B9E90022C8CF /* DSToast.m */; };
+		49E3B23D1BD08F540038F908 /* DSToastAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E3B23C1BD08F540038F908 /* DSToastAnimation.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		4909DAFB1B82B9500022C8CF /* DSToastTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSToastTests.m; sourceTree = "<group>"; };
 		4909DB051B82B9E90022C8CF /* DSToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSToast.h; sourceTree = "<group>"; };
 		4909DB061B82B9E90022C8CF /* DSToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSToast.m; sourceTree = "<group>"; };
+		49E3B23B1BD08F540038F908 /* DSToastAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSToastAnimation.h; sourceTree = "<group>"; };
+		49E3B23C1BD08F540038F908 /* DSToastAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSToastAnimation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,8 @@
 			children = (
 				4909DB051B82B9E90022C8CF /* DSToast.h */,
 				4909DB061B82B9E90022C8CF /* DSToast.m */,
+				49E3B23B1BD08F540038F908 /* DSToastAnimation.h */,
+				49E3B23C1BD08F540038F908 /* DSToastAnimation.m */,
 			);
 			path = Toast;
 			sourceTree = "<group>";
@@ -176,7 +181,7 @@
 		4909DAD41B82B9500022C8CF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = LS;
 				TargetAttributes = {
 					4909DADB1B82B9500022C8CF = {
@@ -234,6 +239,7 @@
 			files = (
 				4909DAE81B82B9500022C8CF /* ViewController.m in Sources */,
 				4909DAE51B82B9500022C8CF /* AppDelegate.m in Sources */,
+				49E3B23D1BD08F540038F908 /* DSToastAnimation.m in Sources */,
 				4909DB071B82B9E90022C8CF /* DSToast.m in Sources */,
 				4909DAE21B82B9500022C8CF /* main.m in Sources */,
 			);
@@ -298,6 +304,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -364,6 +371,7 @@
 				INFOPLIST_FILE = DSToast/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.gitcafe.linfeng1009.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -375,6 +383,7 @@
 				INFOPLIST_FILE = DSToast/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.gitcafe.linfeng1009.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -393,6 +402,7 @@
 				);
 				INFOPLIST_FILE = DSToastTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.gitcafe.linfeng1009.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DSToast.app/DSToast";
 			};
@@ -408,6 +418,7 @@
 				);
 				INFOPLIST_FILE = DSToastTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.gitcafe.linfeng1009.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DSToast.app/DSToast";
 			};
@@ -432,6 +443,7 @@
 				4909DB011B82B9500022C8CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4909DB021B82B9500022C8CF /* Build configuration list for PBXNativeTarget "DSToastTests" */ = {
 			isa = XCConfigurationList;
@@ -440,6 +452,7 @@
 				4909DB041B82B9500022C8CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
