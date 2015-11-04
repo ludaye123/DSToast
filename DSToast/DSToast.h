@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DSToastAnimation.h"
 
 typedef NS_ENUM(NSInteger, DSToastShowType)
 {
@@ -19,12 +20,20 @@ typedef NS_ENUM(NSInteger, DSToastShowType)
 
 @property (nonatomic, assign) CFTimeInterval forwardAnimationDuration;
 @property (nonatomic, assign) CFTimeInterval backwardAnimationDuration;
+@property (nonatomic, assign) CFTimeInterval waitAnimationDuration;
+
 @property (nonatomic, assign) UIEdgeInsets   textInsets;
 @property (nonatomic, assign) CGFloat        maxWidth;
 
-+ (id)toastWithText:(NSString *)text;
+@property (nonatomic, readonly, assign) DSToastShowType showType;
+@property (nonatomic, readonly, assign) DSToastAnimationType animationType;
 
-- (id)initWithText:(NSString *)text;
++ (instancetype)toastWithText:(NSString *)text;
++ (instancetype)toastWithText:(NSString *)text animationType:(DSToastAnimationType)animationType;
+
+- (instancetype)initWithText:(NSString *)text;
+- (instancetype)initWithText:(NSString *)text animationType:(DSToastAnimationType)animationType;
+
 - (void)showInView:(UIView *)view;    //Default is DSToastShowTypeBottom
 - (void)showInView:(UIView *)view showType:(DSToastShowType)type;
 
