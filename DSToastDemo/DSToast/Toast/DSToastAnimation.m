@@ -67,7 +67,6 @@ static NSString *const kOpacityKeyPath = @"opacity";
             
             forwardAnimation = [CABasicAnimation animationWithKeyPath:@"position.x"];
             backwardAnimation = [CABasicAnimation animationWithKeyPath:@"position.x"];
-            
             forwardAnimation.fromValue = @(-CGRectGetWidth([UIScreen mainScreen].bounds));
             forwardAnimation.toValue = @(CGRectGetWidth([UIScreen mainScreen].bounds)/2);
             backwardAnimation.fromValue = @(CGRectGetWidth([UIScreen mainScreen].bounds)/2);
@@ -90,10 +89,8 @@ static NSString *const kOpacityKeyPath = @"opacity";
     animationGroup.delegate = self;
     animationGroup.fillMode = kCAFillModeForwards;
     
-    
     return animationGroup;
 }
-
 
 #pragma mark - CAAnimationDelegate
 

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|  
   s.name             = "DSToast"  
-  s.version          = "1.1.3"  
+  s.version          = "1.1.4"  
   s.summary          = "A toast used on iOS."  
   s.description      = <<-DESC
                        It is a toast used on iOS, which implement by Objective-C.

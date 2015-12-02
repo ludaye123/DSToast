@@ -89,11 +89,19 @@ static CGFloat const kDefalultTextInset = 10.0;
 
 #pragma mark - Show Method
 
+- (void)show
+{
+    [self showInView:[self currentWindow]];
+}
+
+- (void)showWithType:(DSToastShowType)type
+{
+    [self showInView:[self currentWindow] showType:type];
+}
+
 - (void)showInView:(UIView *)view
 {
     [self addAnimationGroup];
-    NSLog(@"%@",NSStringFromCGPoint(self.layer.position));
-
     CGPoint point = view.center;
     point.y = CGRectGetHeight(view.bounds)- kDefaultBottomMargin;
     self.center = point;
@@ -107,21 +115,39 @@ static CGFloat const kDefalultTextInset = 10.0;
     CGPoint point = view.center;
     switch (type) {
         case DSToastShowTypeTop:
-            
             point.y = kDefaultTopMargin;
             break;
     
         case DSToastShowTypeBottom:
-            
             point.y = CGRectGetHeight(view.bounds)- kDefaultBottomMargin;
             break;
             
         default:
             break;
     }
-    
     self.center = point;
     [view addSubview:self];
+}
+
+#pragma mark - Window
+
+- (UIWindow *)currentWindow
+{
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    if(window.windowLevel != UIWindowLevelNormal)
+    {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for (UIWindow *tempWindow in windows)
+        {
+            if(tempWindow.windowLevel == UIWindowLevelNormal)
+            {
+                window = tempWindow;
+                break;
+            }
+        }
+    }
+        
+    return window;
 }
 
 #pragma mark - Animation
@@ -150,7 +176,6 @@ static CGFloat const kDefalultTextInset = 10.0;
 - (void)sizeToFit
 {
     [super sizeToFit];
-    
     CGRect frame = self.frame;
     CGFloat width = CGRectGetWidth(self.bounds) + self.textInsets.left + self.textInsets.right;
     frame.size.width = width > self.maxWidth? self.maxWidth : width;

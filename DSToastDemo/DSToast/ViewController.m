@@ -24,7 +24,8 @@
 - (IBAction)handleShow:(id)sender
 {
     DSToast *toast = [[DSToast alloc] initWithText:@"iOS是由苹果公司开发的移动操作系统"];
-    [toast showInView:self.view];
+//    [toast showInView:self.view];
+    [toast show];
 //    [toast showInView:self.view showType:DSToastShowTypeBottom];
 }
 

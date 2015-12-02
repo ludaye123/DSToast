@@ -34,6 +34,9 @@ typedef NS_ENUM(NSInteger, DSToastShowType)
 - (instancetype)initWithText:(NSString *)text;
 - (instancetype)initWithText:(NSString *)text animationType:(DSToastAnimationType)animationType;
 
+
+- (void)show;   // show in window
+- (void)showWithType:(DSToastShowType)type; // show in window with type
 - (void)showInView:(UIView *)view;    //Default is DSToastShowTypeBottom
 - (void)showInView:(UIView *)view showType:(DSToastShowType)type;
 
