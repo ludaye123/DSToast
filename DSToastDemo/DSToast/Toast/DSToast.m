@@ -77,6 +77,7 @@ static CGFloat const kDefalultTextInset = 10.0;
         self.maxWidth = CGRectGetWidth([[UIScreen mainScreen] bounds]) - 20.0;
         self.layer.cornerRadius = 5.0;
         self.layer.masksToBounds = YES;
+        self.layer.contentsScale = [[UIScreen mainScreen] scale];
         self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
         self.numberOfLines = 0;
         self.textAlignment = NSTextAlignmentLeft;
